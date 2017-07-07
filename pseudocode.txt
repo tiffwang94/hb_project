@@ -1,0 +1,18 @@
+User Flow:
+	The game will have two players. Each player will have one move per turn to 			place their letter in their respective spot on the board. 
+	The board must be filled at the bottom before being filled to the top.
+	Players can win when they get 4 letters in a row: horizontal/diagonal/			vertical.
+	
+
+Steps:
+	The board must be drawn out each turn.
+	The first player will choose their first spot.
+	The board will update with the chosen spot.
+	Player two will go next
+	The code will indicate whether or not it is a valid spot to choose
+		If valid, player one will be prompted for their turn.
+	these steps will be repeated until there is a winner and will then ask if the 	players want to play again.
+
+Data to keep track of:
+	The spots players are choosing per turn
+	Checking to see if spots chosen are valid
