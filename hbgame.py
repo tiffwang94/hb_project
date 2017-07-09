@@ -33,18 +33,23 @@ row_2 = ["B", "B", "B", "B", "B"]
 row_1 = ["A", "A", "A", "A", "A"]
 
 
-print "5 {}".format(row_5)
-print "---"
-print "4 {}".format(row_4)
-print "---"
-print "3 {}".format(row_3)
-print "---"
-print "2 {}".format(row_2)
-print "---"
-print "1 {}".format(row_1)
-print "----1 -- 2 -- 3 -- 4 -- 5"
+print "5 | {} | {} | {} | {} | {} |".format(row_5[0], row_5[1], row_5[2], row_5[3], row_5[4])
+print "-----------------------"
+print "4 | {} | {} | {} | {} | {} |".format(row_4[0], row_4[1], row_4[2], row_4[3], row_4[4])
+print "-----------------------"
+print "3 | {} | {} | {} | {} | {} |".format(row_3[0], row_3[1], row_3[2], row_3[3], row_3[4])
+print "-----------------------"
+print "2 | {} | {} | {} | {} | {} |".format(row_2[0], row_2[1], row_2[2], row_2[3], row_2[4])
+print "-----------------------"
+print "1 | {} | {} | {} | {} | {} |".format(row_1[0], row_1[1], row_1[2], row_1[3], row_1[4])
+print "-----------------------"
+print "--- 1 - 2 - 3 - 4 - 5--"
 print 
 print "{}, you will be starting first, please choose your first coordinates.".format(playerone)
+print "........"
+
+#so far, players have been chosen and given their letters, grid has been  made
+
 
 
 
