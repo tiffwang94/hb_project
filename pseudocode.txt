@@ -1,7 +1,7 @@
 User Flow:
-	The game will have two players. Each player will have one move per turn to 			place their letter in their respective spot on the board. 
+	The game will have two players. Each player will have one move per turn to place their letter in their respective spot on the board. 
 	The board must be filled at the bottom before being filled to the top.
-	Players can win when they get 4 letters in a row: horizontal/diagonal/			vertical.
+	Players can win when they get 4 letters in a row: horizontal/diagonal/vertical.
 	
 
 Steps:
