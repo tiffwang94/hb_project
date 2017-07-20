@@ -36,6 +36,17 @@ current_player = "X"
 
 game_continues = True
 
+diagonal_coordinates = {
+	[(0,0), (1,1), (2,2), (3,3)]
+	[(1,1), (2,2), (3,3), (4,4)]
+	[(0,1), (1,2), (2,3), (3,4)]
+	[(1,0), (2,1), (3,2), (4,3)]
+	[(0,4), (1,3), (2,2), (3,1)]
+	[(1,3), (2,2), (3,1), (4,0)]
+	[(0,3), (1,2), (2,1), (3,0)]
+	[(1,4), (2,3), (3,2), (4,1)]}
+
+
 def print_board():
 	print "| {} | {} | {} | {} | {} |".format(rows[4][0], rows[4][1], rows[4][2], rows[4][3], rows[4][4])
 	print "----------------------"
@@ -48,6 +59,16 @@ def print_board():
 	print "| {} | {} | {} | {} | {} |".format(rows[0][0], rows[0][1], rows[0][2], rows[0][3], rows[0][4])
 	print "----------------------"
 	print "- 0 - 1 - 2 - 3 - 4-"
+
+# if rows[0][0] == current_player and rows[1][1] == current_player and rows [2][2] == current_player:
+# 	if 	rows[1][1] == current_player and rows[2][2] == current_player and rows[3[]3] == current_player and rows[4][]4] == current_player:
+# 		if rows[0][1] == current_player and rows[1][2] == current_player and rows[2][3] == current_player and rows[3][4] == current_player:
+# 			if rows[1][0] == current_player and rows[2][1] == current_player and rows[3][2] == current_player and rows[4][3] == current_player:
+# 				if rows[0][4] == current_player and rows[1][3] == current_player and rows[2][2] == current_player and rows[3][1] == current_player:
+# 					if rows[1][3] == current_player and rows[2][2] == current_player and rows[3][1] == current_player and rows[4][0] == current_player:
+# 						if rows[0][3] == current_player and rows[1][2] == current_player and rows[2][1] == current_player and rows[3][0] == current_player:
+# 							if rows[1][4] == current_player and rows[2][3] == current_player and rows[3][2] == current_player and rows[4][1] == current_player:
+
 
 def check_valid(column):
 	if count[column] < 6:
@@ -76,13 +97,35 @@ def check_for_win(current_player):
 	for row in range(5):
 	 	for column in range(5):
 	 		if rows[row][column] == current_player:
-	 			counter += 1 
+	 			horizontal_counter += 1
+	 		elif rows[column][row] == current_player:
+	 			vertical_counter += 1
 	 		else:
-	 			counter = 0
-	 		if counter == 4:
-	 			print counter
+	 			horizontal_counter = 0
+	 			vertical_counter = 0
+	 		if horizontal_counter == 4:
+	 			if vertical_counter == 4:
+	 				print counter
 	 			game_continues = False
 	 			return True 
+	 		#above is option number 2 given
+
+
+	 		for diag in diagonal_coordinates:
+	 			counter = 0
+	 			for coordinate in diag:
+	 				row = coordinate[0]
+	 				column = coordinate[1]
+	 				if rows[row][column] == current_player:
+	 					counter += 1
+	 				else:
+	 					counter = 0
+	 				if counter == 4: 
+	 					#this bit is for the diagonal wins
+	 					print counter
+	 				game_continues = False
+	 				return True 
+
 
 def switch_players(player):
 	if player == "X":
@@ -90,14 +133,18 @@ def switch_players(player):
 	else:
 		return "X"
 
+
+
 while game_continues == True:
 	print_board()
 	print "{}, it is your turn.".format(current_player)
 	p_one_choice = int(raw_input("Please choose a column. > "))
 
+
 	while check_valid(p_one_choice) == False:
 		p_one_choice = raw_input("That's not a valid column. Please choose another one. ")
 	update_board(p_one_choice, current_player)
+
 	if check_for_win(current_player): 
 		print "Game over. Good job, {} !".format(current_player)
 		game_continues = False
