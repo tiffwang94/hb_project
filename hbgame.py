@@ -22,6 +22,7 @@ print "Hello, {}!".format(playertwo)
 print
 print "The object of this game is to connect four letters in a row, either horizontally or vertically."
 print "Each player must choose a column, numbered at the bottom of the board. The first play to four in a row wins!"
+print
 print "Player one will always go first."
 print
 print "{}, you will be letter 'X' and {}, you will be letter 'O'".format(playerone, playertwo)
@@ -36,15 +37,15 @@ current_player = "X"
 
 game_continues = True
 
-diagonal_coordinates = {
-	[(0,0), (1,1), (2,2), (3,3)]
-	[(1,1), (2,2), (3,3), (4,4)]
-	[(0,1), (1,2), (2,3), (3,4)]
-	[(1,0), (2,1), (3,2), (4,3)]
-	[(0,4), (1,3), (2,2), (3,1)]
-	[(1,3), (2,2), (3,1), (4,0)]
-	[(0,3), (1,2), (2,1), (3,0)]
-	[(1,4), (2,3), (3,2), (4,1)]}
+diagonal_wins = [
+	[(0,0), (1,1), (2,2), (3,3)],
+	[(1,1), (2,2), (3,3), (4,4)],
+	[(0,1), (1,2), (2,3), (3,4)],
+	[(1,0), (2,1), (3,2), (4,3)],
+	[(0,4), (1,3), (2,2), (3,1)],
+	[(1,3), (2,2), (3,1), (4,0)],
+	[(0,3), (1,2), (2,1), (3,0)],
+	[(1,4), (2,3), (3,2), (4,1)]]
 
 
 def print_board():
@@ -92,39 +93,34 @@ def update_board(column, current_player):
 	print_board()
 	
 def check_for_win(current_player):
-	print "checking_for_win"
-	counter = 0
+	horizontal_counter = 0
+	vertical_counter = 0
 	for row in range(5):
 	 	for column in range(5):
 	 		if rows[row][column] == current_player:
 	 			horizontal_counter += 1
 	 		elif rows[column][row] == current_player:
 	 			vertical_counter += 1
+	 		elif horizontal_counter == 4 or vertical_counter == 4:
+	 			return True
 	 		else:
 	 			horizontal_counter = 0
 	 			vertical_counter = 0
-	 		if horizontal_counter == 4:
-	 			if vertical_counter == 4:
-	 				print counter
-	 			game_continues = False
-	 			return True 
 	 		#above is option number 2 given
 
-
-	 		for diag in diagonal_coordinates:
-	 			counter = 0
-	 			for coordinate in diag:
-	 				row = coordinate[0]
-	 				column = coordinate[1]
-	 				if rows[row][column] == current_player:
-	 					counter += 1
-	 				else:
-	 					counter = 0
-	 				if counter == 4: 
-	 					#this bit is for the diagonal wins
-	 					print counter
-	 				game_continues = False
-	 				return True 
+	for diag in diagonal_wins:
+		counter = 0
+		for coordinate in diag:
+			row = coordinate[0]
+			column = coordinate[1]
+			if rows[row][column] == current_player:
+				counter += 1
+			else:
+				counter = 0
+			if counter == 4: 
+				#this bit is for the diagonal wins
+				print counter
+				return True 
 
 
 def switch_players(player):
