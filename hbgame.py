@@ -20,7 +20,7 @@ playertwo = playertwo.capitalize()
 print
 print "Hello, {}!".format(playertwo)
 print
-print "The object of this game is to connect four letters in a row, either horizontally or vertically."
+print "The object of this game is to connect four letters in a row, either diagonally, horizontally or vertically."
 print "Each player must choose a column, numbered at the bottom of the board. The first play to four in a row wins!"
 print
 print "Player one will always go first."
@@ -149,7 +149,7 @@ while game_continues == True:
     update_board(p_one_choice, current_player)
 
     if check_for_win(current_player): 
-        print "Game over. Good job, {} !".format(current_player)
+        print "\nGame over. Good job, {} !\n".format(current_player)
         game_continues = False
     current_player = switch_players(current_player)
 
